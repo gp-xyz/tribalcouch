@@ -16,12 +16,13 @@ function Contestants() {
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-1">
         {stats.map((person, index) => (
           <div key={index} className='lilbubble'>
-            <img className='w-full h-auto' src={'/images/'+person.name + '.jpg'} /> 
+            <div className="image-container">
+              <img className="w-full h-auto" src={'/images/'+person.name + '.jpg'} alt={person.name} />
+              {person.votedOff === 1 && <div className="overlay"></div>}
+            </div>
             <div className='grid grid-cols-1'>
               <div className='font-bold'>{person.name}: {person.count} selection</div>
-              
             </div>
-            
           </div>
         ))}
       </div>

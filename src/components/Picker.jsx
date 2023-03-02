@@ -33,11 +33,11 @@ function Picker(props) {
             }
             onClick={() => handlePick(contestant)}
           >
-            <img
-              src={'images/' + contestant.name + '.jpg'}
-              alt={contestant.name}
-              className="w-full h-auto"
-            />
+            <div className="image-container">
+              <img className="w-full h-auto" src={'/images/'+contestant.name + '.jpg'} alt={contestant.name} />
+              {contestant.votedOff === 1 && <div className="overlay"></div>}
+            </div>
+            
             <p className="text-center">{contestant.name}</p>
           </div>
         ))}

@@ -25,10 +25,24 @@ function Tribes() {
               </div>
 
               <div className='grid grid-cols-3 border-yellow-300 border-4 p-1'>
-              <img src={'images/'+tribe.pick1 + '.jpg'} />
-              <img src={'images/'+tribe.pick2 + '.jpg'} />
-              <img src={'images/'+tribe.pick3 + '.jpg'} />
+
+              <div className="image-container">
+              <img className="w-full h-auto" src={'/images/'+tribe.pick1 + '.jpg'} alt={tribe.pick1} />
+              {tribe.pick1_votedOff === 1 && <div className="overlay"></div>}
+            </div>
+
+            <div className="image-container">
+              <img className="w-full h-auto" src={'/images/'+tribe.pick2 + '.jpg'} alt={tribe.pick2} />
+              {tribe.pick2_votedOff === 1 && <div className="overlay"></div>}
+            </div>
+
+            <div className="image-container">
+              <img className="w-full h-auto" src={'/images/'+tribe.pick3 + '.jpg'} alt={tribe.pick3} />
+              {tribe.pick3_votedOff === 1 && <div className="overlay"></div>}
+            </div>
+            
                 
+        
                 
               </div>
             </div>

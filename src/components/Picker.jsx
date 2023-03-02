@@ -4,6 +4,11 @@ function Picker(props) {
   const [picks, setPicks] = useState([]);
 
   function handlePick(contestant) {
+    // check if the contestant has been voted off
+    if (contestant.votedOff === 1) {
+      return;
+    }
+  
     const index = picks.findIndex(p => p.id === contestant.id);
     let newPicks;
     if (index === -1) {
@@ -17,6 +22,7 @@ function Picker(props) {
     setPicks(newPicks);
     props.OnPick(newPicks);
   }
+  
   
 
   return (

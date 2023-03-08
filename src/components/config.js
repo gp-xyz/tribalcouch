@@ -1,5 +1,5 @@
 const config = {
-    serverName: "https://ssgs-disco.pythonanywhere.com/"
+    serverName: "https://probst-disco.pythonanywhere.com/"
   };
   
   export default config;

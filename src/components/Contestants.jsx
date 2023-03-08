@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-
+import config from './config';
 function Contestants() {
   const [stats, setStats] = useState([]);
 
   useEffect(() => {
-    fetch('https://probst-disco.pythonanywhere.com/stats/')
+    fetch(`${config.serverName}/stats`)
       .then(response => response.json())
       .then(data => setStats(data))
       .catch(error => console.error(error));

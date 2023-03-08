@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Picker from './Picker';
 import { Link } from 'react-router-dom';
+import config from './config';
+
 function NewTribe() {
   const [contestants, setContestants] = useState([]);
   const [tribeName, setTribeName] = useState('');
   const [energy, setEnergy] = useState('');
   const [picked, setPicked] = useState([]);
   useEffect(() => {
-    fetch('https://probst-disco.pythonanywhere.com/contestants')
+    fetch(`${config.serverName}/contestants`)
       .then(response => response.json())
       .then(data => setContestants(data));
   }, []);
@@ -17,7 +19,7 @@ function NewTribe() {
     event.preventDefault();
 
     const outData = { 'tribename': tribeName, energy: energy, picked: picked }
-    fetch(`https://probst-disco.pythonanywhere.com/submit`,
+    fetch(`${config.serverName}/submit`,
       {
         method: 'POST',
         headers: { "Content-Type": "application/json" },
@@ -79,7 +81,7 @@ function NewTribe() {
             
           </div>
          <button onClick={handleSubmit} className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-md">
-         <Link to='/tribes/'>Submit</Link>
+         <Link to='/tribes/'>Submit SHEET</Link>
           </button>
 
         </div>

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-
+import config from './config';
 function Tribes() {
   const [tribes, setTribes] = useState([]);
 
   useEffect(() => {
-    fetch('https://probst-disco.pythonanywhere.com/tribes/')
+    fetch(`${config.serverName}/tribes/`)
       .then(response => response.json())
       .then(data => setTribes(data))
       .catch(error => console.error(error));

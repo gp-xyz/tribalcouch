@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 function Home() {
   const [messages, setMessages] = useState([]);
 
-  useEffect(() => {
-    fetch('https://probst-disco.pythonanywhere.com/messages')
-      .then(response => response.json())
-      .then(data => setMessages(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch('https://probst-disco.pythonanywhere.com/messages')
+  //     .then(response => response.json())
+  //     .then(data => setMessages(data));
+  // }, []);
 
   return (
     <div className='bubblebox'>

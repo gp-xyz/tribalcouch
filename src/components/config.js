@@ -1,6 +1,6 @@
 const config = {
-  serverName2: "https://ssgs-disco.pythonanywhere.com/",
-  serverName: "http://localhost:7000",
+  serverName: "https://ssgs-disco.pythonanywhere.com/",
+  serverName2: "http://localhost:7000",
   };
   
   export default config;

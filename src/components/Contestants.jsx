@@ -21,7 +21,15 @@ function Contestants() {
               {person.votedOff === 1 && <div className="overlay"></div>}
             </div>
             <div className='grid grid-cols-1'>
-              <div className='font-bold'>{person.name}: {person.count} selection</div>
+              <div className='font-bold'>{person.name}: {person.count} selection{person.count > 1 && <text>s</text>}</div>
+              <div>
+  {person.tribes.length > 0 ? (
+    person.tribes.map((item) => <div key={item} className='text-xs'>{item}</div>)
+  ) : (
+    <div />
+  )}
+</div>
+
             </div>
           </div>
         ))}

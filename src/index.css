@@ -32,7 +32,10 @@ body {
 
 
 .lilbubble{
-  @apply rounded text-gabe text-gabe bg-slate-400 m-3 p-3 min-w-fit bg-opacity-90;
+  @apply rounded text-gabe  bg-slate-400 m-3 p-3 min-w-fit bg-opacity-90;
+}
+.lilgrid{
+  @apply rounded-sm bg-slate-400 m-1 p-1 min-w-fit bg-opacity-90;
 }
 
 .nav-link {

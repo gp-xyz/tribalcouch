@@ -22,6 +22,9 @@ function Home() {
         ))}
       </ul> */}
       
+      <div className='sofaheader lilbubble'> Registration closed. Check out the pages for a deeper look into the game. </div>
+
+
       <div className='sofaheader'> Welcome to Tribal Couch aka Sofa Survivor 2023. </div>
 
 

@@ -2,16 +2,16 @@ import { useEffect, useState } from 'react';
 import config from './config';
 
 function Tribes() {
-  const colors = ['#b71c1c', '#880E4F', '#6A1B9A', '#4527A0', '#283593', 
-  '#1565C0', '#006064', '#004D40', '#2E7D32', '#558B2F',
-  '#9E9D24', '#FBC02D', '#FFA000', '#E64A19', '#D84315',
-  '#4E342E', '#616161', '#455A64', '#00838F', '#C62828']
+  const colors = ['#b71c1c', '#880E4F', '#6A1B9A', '#4527A0', '#283593',
+    '#1565C0', '#006064', '#004D40', '#2E7D32', '#558B2F',
+    '#9E9D24', '#FBC02D', '#FFA000', '#E64A19', '#D84315',
+    '#4E342E', '#616161', '#455A64', '#00838F', '#C62828']
 
 
   const [tribes, setTribes] = useState([]);
   const [listview, setListView] = useState(false);
   const [colorobj, setColorobj] = useState(colors);
-  const [deadlist,setDeadList] = useState([])
+  const [deadlist, setDeadList] = useState([])
 
   useEffect(() => {
     let templist = [];
@@ -35,7 +35,7 @@ function Tribes() {
             newobj[element.pick3] = colors[curcolor]
             curcolor++
           }
-          
+
 
           if (element.p1 === 1) {
             templist.push(element.pick1);
@@ -66,7 +66,7 @@ function Tribes() {
     <div className='bubblebox'>
       <h2 className='sofaheader'>
         Tribes:{' '}
-        <button onClick={toggleListView} className='bg-slate-300 rounded hover:bg-slate-400'>
+        <button onClick={toggleListView} className='bg-slate-300 rounded-xl border-blue-500 border-2 hover:bg-slate-400'>
           {listview ? 'Show Tribe Photo' : 'Show Leaderboard'}
         </button>
       </h2>
@@ -75,19 +75,19 @@ function Tribes() {
         <div className='bg-slate-400 rounded-sm p-4 grid grid-cols-1'>
           {tribes.map((tribe, index) => (
 
-            <div className='grid grid-cols-5'>
-              <div className='col-span-2'><span className='p-2 text-white drop-shadow-md'>({tribe.total})</span>{tribe.tribename}</div>
-              
-              {[tribe.pick1, tribe.pick2, tribe.pick3].map((item, index) => {
-  const isDead = deadlist.includes(item);
-  return (
-    <div className={`p-2 font-semibold ${isDead ? 'line-through' : ''}`} key={item}>
-      <font color={colorobj[item]}> {item} </font>
-    </div>
-  );
-})}
+            <div className='grid grid-cols-2 md:grid-cols-5'>
+              <div className='col-span-2 underline md:no-underline'><span className='p-2 text-white drop-shadow-md '>({tribe.total})</span>{tribe.tribename}</div>
 
-            
+              {[tribe.pick1, tribe.pick2, tribe.pick3].map((item, index) => {
+                const isDead = deadlist.includes(item);
+                return (
+                  <div className={`p-2 font-semibold ${isDead ? 'line-through' : ''}`} key={item}>
+                    <font color={colorobj[item]}> {item} </font>
+                  </div>
+                );
+              })}
+
+
 
             </div>
 

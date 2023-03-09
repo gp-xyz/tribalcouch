@@ -11,8 +11,10 @@ function Tribes() {
   const [tribes, setTribes] = useState([]);
   const [listview, setListView] = useState(false);
   const [colorobj, setColorobj] = useState(colors);
+  const [deadlist,setDeadList] = useState([])
 
   useEffect(() => {
+    let templist = [];
     fetch(`${config.serverName}/tribes/`)
       .then(response => response.json())
       .then(data => {
@@ -33,11 +35,23 @@ function Tribes() {
             newobj[element.pick3] = colors[curcolor]
             curcolor++
           }
+          
+
+          if (element.p1 === 1) {
+            templist.push(element.pick1);
+          }
+          if (element.p2 === 1) {
+            templist.push(element.pick2);
+          }
+          if (element.p3 === 1) {
+            templist.push(element.pick3);
+          }
 
         }
 
         );
         setColorobj(newobj)
+        setDeadList(templist)
         console.log('gg:')
         console.log(newobj)
       })
@@ -53,7 +67,7 @@ function Tribes() {
       <h2 className='sofaheader'>
         Tribes:{' '}
         <button onClick={toggleListView} className='bg-slate-300 rounded hover:bg-slate-400'>
-          {listview ? 'Show Tribe Photo' : 'Show Colorful List'}
+          {listview ? 'Show Tribe Photo' : 'Show Leaderboard'}
         </button>
       </h2>
 
@@ -62,11 +76,17 @@ function Tribes() {
           {tribes.map((tribe, index) => (
 
             <div className='grid grid-cols-5'>
-              <div className='col-span-2'>{tribe.tribename}</div>
+              <div className='col-span-2'><span className='p-2 text-white drop-shadow-md'>({tribe.total})</span>{tribe.tribename}</div>
               
-                {[tribe.pick1, tribe.pick2, tribe.pick3].map((item, index) => {
-                  return (<div className='p-2 font-semibold' key={item}> <font color={colorobj[item]}> {item}  </font></div>)
-                })}
+              {[tribe.pick1, tribe.pick2, tribe.pick3].map((item, index) => {
+  const isDead = deadlist.includes(item);
+  return (
+    <div className={`p-2 font-semibold ${isDead ? 'line-through' : ''}`} key={item}>
+      <font color={colorobj[item]}> {item} </font>
+    </div>
+  );
+})}
+
             
 
             </div>

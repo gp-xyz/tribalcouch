@@ -73,7 +73,7 @@ function Tribes() {
 
       {listview ? (
         <div className='bg-slate-400 rounded-sm p-4 grid grid-cols-1'>
-          {tribes.map((tribe, index) => (
+          {tribes.length ? (tribes.map((tribe, index) => (
 
             <div className='grid grid-cols-2 md:grid-cols-5'>
               <div className='col-span-2 underline md:no-underline'><span className='p-2 text-white drop-shadow-md '>({tribe.total})</span>{tribe.tribename}</div>
@@ -91,7 +91,7 @@ function Tribes() {
 
             </div>
 
-          ))}
+          ))) : (<div className='lilbubble'>Loading..</div>)}
         </div>
       ) : (
         <ul>

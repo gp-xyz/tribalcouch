@@ -105,39 +105,22 @@ function Tribes() {
                 </div>
 
                 <div className='grid grid-cols-3 border-yellow-300 border-4 p-1'>
-                  <div className='image-container'>
-                    <img
-                      className='w-full h-auto'
-                      src={'/images/' + tribe.pick1 + '.jpg'}
-                      alt={tribe.pick1}
-                    />
-                    {tribe.pick1_votedOff === 1 && (
-                      <div className='overlay'></div>
-                    )}
-                  </div>
-
-                  <div className='image-container'>
-                    <img
-                      className='w-full h-auto'
-                      src={'/images/' + tribe.pick2 + '.jpg'}
-                      alt={tribe.pick2}
-                    />
-                    {tribe.pick2_votedOff === 1 && (
-                      <div className='overlay'></div>
-                    )}
-                  </div>
-
-                  <div className='image-container'>
-                    <img
-                      className='w-full h-auto'
-                      src={'/images/' + tribe.pick3 + '.jpg'}
-                      alt={tribe.pick3}
-                    />
-                    {tribe.pick3_votedOff === 1 && (
-                      <div className='overlay'></div>
-                    )}
-                  </div>
+                  {[tribe.pick1, tribe.pick2, tribe.pick3].map((pick, index) => {
+                    const isDead = deadlist.includes(tribe['pick' + (index + 1) ])
+                    return (
+                    <div className='image-container' key={index}>
+                      <img
+                        className='w-full h-auto'
+                        src={'/images/' + pick + '.jpg'}
+                        alt={pick}
+                      />
+                      { isDead && (
+                        <div className='overlay'></div>
+                      )}
+                    </div>
+                  )})}
                 </div>
+
               </div>
             </li>
           ))}

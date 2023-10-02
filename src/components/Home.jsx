@@ -21,7 +21,7 @@ function Home() {
           </li>
         ))}
       </ul> */}
-      
+    
       <div className='sofaheader lilbubble'> Registration OPEN for September 2023! </div>
 
 
